@@ -1,5 +1,5 @@
 # TeamTreehouse FullStack JavaScript Techdegree Project9
-# Using Gulp to Build a Frontend-Website
+# Create a Gallery App with React
 
 ## About this Project
 
