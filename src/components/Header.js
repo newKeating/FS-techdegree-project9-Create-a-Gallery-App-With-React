@@ -1,10 +1,10 @@
 import React from 'react';
-import SearchFrom from './SearchForm';
+import SearchForm from './SearchForm';
 import NavMenu from './NavMenu';
 
-const Header = () => (
+const Header = (props) => (
   <div>
-    <SearchFrom />
+    <SearchForm props={props}/>
     <NavMenu />
   </div>
 );

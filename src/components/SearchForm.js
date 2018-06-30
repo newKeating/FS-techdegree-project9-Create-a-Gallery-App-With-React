@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 export default class SearchForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
-    let searchKey = this.searchKey.value;
-    let path = `/${searchKey}`;
-    this.props.history.push(path);
+    let searchText = this.searchText.value;
+    let path = `/search/${searchText}`;
+    this.props.props.history.push(path);
   }
 
   render() {
@@ -16,7 +16,7 @@ export default class SearchForm extends Component {
           name="search" 
           placeholder="Search" 
           required 
-          ref={ (input) => this.searchKey = input } 
+          ref={ (input) => this.searchText = input } 
         />
         <button type="submit" className="search-button">
           <svg fill="#fff" height="24" viewBox="0 0 23 23" width="24" xmlns="http://www.w3.org/2000/svg">

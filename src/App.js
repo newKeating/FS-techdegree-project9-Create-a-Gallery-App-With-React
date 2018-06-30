@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import Header from './components/Header';
-import Home from './components/Home';
+import Container from './components/Container';
 import Cat from './components/Cat';
 import Dog from './components/Dog';
 import Coffee from './components/Coffee';
@@ -13,10 +12,12 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
-          <Header />
+        <div className="container">
+          <Route component={Header} />
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" render={ () => <Redirect to={'/search'} />} />
+            <Route exact path="/search" component={Container} />
+            <Route path="/search/:searchText" component={Container} />
             <Route path="/cat" component={Cat} />
             <Route path="/dog" component={Dog} />
             <Route path="/coffee" component={Coffee} />
