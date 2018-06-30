@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Gallery = (props) => {
-  const { photos } = props;
+  const { photos, searchText } = props;
   const galleryImages = photos.map((photo) => {
     return (
       <li key={photo.id}>
@@ -11,7 +11,7 @@ const Gallery = (props) => {
   }); 
   return (
     <div className="photo-container">
-      <h2>Results</h2>
+      <h2>Results: {searchText}</h2>
       <ul>
         {galleryImages}
       </ul>
