@@ -18,6 +18,8 @@ class Container extends Component {
   state = {
     photos: [],
     searchText: '',
+    loading: true,
+    error: false
   }
 
   fetchPhotos(query) {
@@ -25,21 +27,26 @@ class Container extends Component {
     .then(response => {
       this.setState({
         photos: response.data.photos.photo,
-        searchText: query
+        searchText: query,
+        loading: false
       });
-      console.log(this.state.photos);
-      console.log(this.state.searchText);
+    })
+    .catch(error => {
+      console.log('Failed to fetch photos', error);
+      this.setState({ error: true });
     })
   }
 
-  displayPhotos() {
-
-  }
-
   render() {
+    let jsx;
+    if (this.state.loading) {
+      jsx = <div>Loading...</div>;
+    } else {
+      jsx = <Gallery photos={this.state.photos} searchText={this.state.searchText} />
+    }
     return (
       <div>
-        <Gallery photos={this.state.photos}/>
+        {jsx}
       </div>
     );
   }
