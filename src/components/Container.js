@@ -2,9 +2,16 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import API_KEY from '../config';
 
-export default class Container extends Component {
+import Gallery from './Gallery';
+
+class Container extends Component {
   componentDidMount() {
-    let query = this.props.match.params.searchText;
+    const query = this.props.match.params.searchText;
+    this.fetchPhotos(query);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const query = nextProps.match.params.searchText;
     this.fetchPhotos(query);
   }
 
@@ -32,9 +39,10 @@ export default class Container extends Component {
   render() {
     return (
       <div>
-        Container
+        <Gallery photos={this.state.photos}/>
       </div>
     );
   }
 }
-  
+
+export default Container;
